@@ -1,15 +1,17 @@
 package com.petervine.winerystore.model;
 
 import jakarta.persistence.*;
+import lombok.ToString;
 
 import java.util.Set;
 
 @Entity
 @Table(name = "products")
+@ToString
 public class Product {
 
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "product_type_id")
