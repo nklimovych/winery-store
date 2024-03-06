@@ -10,7 +10,7 @@ import java.util.Set;
 public class Order {
     @Id
     @Column
-    private Integer id;
+    private Long id;
     @Column
     private LocalDateTime timeOfOrder;
     @Column
