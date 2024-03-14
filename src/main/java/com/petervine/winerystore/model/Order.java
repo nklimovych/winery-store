@@ -3,7 +3,7 @@ package com.petervine.winerystore.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -13,13 +13,6 @@ public class Order {
     private Long id;
     @Column
     private LocalDateTime timeOfOrder;
-    @Column
-    private Double totalSum;
-
-    @ManyToMany
-    @JoinTable(
-            name = "order_product",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
-    Set<Product> productSet;
+    @OneToMany(mappedBy = "order")
+    List<OrderItem> listOfOrderItems;
 }

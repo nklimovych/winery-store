@@ -3,6 +3,7 @@ package com.petervine.winerystore.model;
 import jakarta.persistence.*;
 import lombok.ToString;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,10 +28,10 @@ public class Product {
     @Column
     private Double alcoholPercentage;
     @ManyToOne
-    @JoinColumn(name = "grapeSortId")
+    @JoinColumn(name = "grape_sort_id")
     private GrapeSort grapeSort;
     @Column
     private String description;
-    @ManyToMany(mappedBy = "productSet")
-    Set<Order> orderSet;
+    @OneToMany(mappedBy = "product")
+    List<OrderItem> orderItems;
 }
